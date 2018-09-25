@@ -1,0 +1,65 @@
+{
+  "data" : {
+    "pairs" : [ {
+      "request" : {
+        "path" : [ {
+          "matcher" : "exact",
+          "value" : "/api/v6/convert"
+        } ],
+        "method" : [ {
+          "matcher" : "exact",
+          "value" : "GET"
+        } ],
+        "destination" : [ {
+          "matcher" : "exact",
+          "value" : "free.currencyconverterapi.com"
+        } ],
+        "scheme" : [ {
+          "matcher" : "exact",
+          "value" : "https"
+        } ],
+        "query" : {
+          "q" : [ {
+            "matcher" : "exact",
+            "value" : "USD_CNY"
+          } ]
+        },
+        "body" : [ {
+          "matcher" : "exact",
+          "value" : ""
+        } ]
+      },
+      "response" : {
+        "status" : 200,
+        "body" : "H4sIAAAAAAAAA6pWKixNLapUsqpWSs4vzStRsjKs1VEqSi0uzSkpBomGBrvEO/tFgpiZKUpWcL6OUllijpKVmZ6FmZmluaGOUkm+kpUSRCatCKJQqba2FgAAAP//AwBEQvh+YQAAAA==",
+        "encodedBody" : true,
+        "templated" : false,
+        "headers" : {
+          "Access-Control-Allow-Headers" : [ "Origin, X-Requested-With, Content-Type, Accept" ],
+          "Access-Control-Allow-Origin" : [ "*" ],
+          "Cf-Ray" : [ "45febb49a88479b5-SEA" ],
+          "Connection" : [ "keep-alive" ],
+          "Content-Encoding" : [ "gzip" ],
+          "Content-Type" : [ "application/json; charset=utf-8" ],
+          "Date" : [ "Tue, 25 Sep 2018 16:05:19 GMT" ],
+          "Etag" : [ "W/\"61-Fur+rFVa22vEkTXB/axBAusAbYg\"" ],
+          "Expect-Ct" : [ "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"" ],
+          "Hoverfly" : [ "Was-Here" ],
+          "Server" : [ "cloudflare" ],
+          "Set-Cookie" : [ "__cfduid=df5f1db30a15e3e56c5a09a649dfe4a071537891518; expires=Wed, 25-Sep-19 16:05:18 GMT; path=/; domain=.currencyconverterapi.com; HttpOnly", "express:sess=eyJjc3JmU2VjcmV0IjoicUo1RFl4WENiVy1MS0RDc1pXcjNVcUZuIiwicGFzc3BvcnQiOnt9fQ==; path=/; secure; httponly", "express:sess.sig=I46C_0xFG9quVkwS-6RpuRr7HW8; path=/; secure; httponly" ],
+          "Transfer-Encoding" : [ "chunked" ],
+          "X-Content-Type-Options" : [ "nosniff" ],
+          "X-Powered-By" : [ "Express" ]
+        }
+      }
+    } ],
+    "globalActions" : {
+      "delays" : [ ]
+    }
+  },
+  "meta" : {
+    "schemaVersion" : "v5",
+    "hoverflyVersion" : "v0.17.1",
+    "timeExported" : "2018-09-25T09:05:19-07:00"
+  }
+}
