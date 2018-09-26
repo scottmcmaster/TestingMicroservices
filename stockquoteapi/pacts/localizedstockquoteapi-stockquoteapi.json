@@ -19,9 +19,34 @@
                 },
                 "body": {
                     "symbol": "BABA",
-                    "price": 164.74
+                    "price": 100
+                },
+                "matchingRules": {
+                    "body": {
+                        "$.price": {
+                            "matchers": [
+                                {
+                                    "match": "decimal"
+                                }
+                            ],
+                            "combine": "AND"
+                        }
+                    }
+                },
+                "generators": {
+                    "body": {
+                        "$.price": {
+                            "type": "RandomDecimal",
+                            "digits": 10
+                        }
+                    }
                 }
-            }
+            },
+            "providerStates": [
+                {
+                    "name": "localizedstockquoteapi to stockquoteapi"
+                }
+            ]
         }
     ],
     "metadata": {

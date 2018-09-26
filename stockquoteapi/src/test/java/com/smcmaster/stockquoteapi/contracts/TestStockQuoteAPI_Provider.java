@@ -33,8 +33,7 @@ public class TestStockQuoteAPI_Provider {
 		application = (ConfigurableWebApplicationContext) SpringApplication.run(Application.class);
 	}
 
-//	@State("localizedstockquoteapi to stockquoteapi")
-//	public void toGetState() {
-//		
-//	}
+	@State("localizedstockquoteapi to stockquoteapi")
+	public void toGetState() {
+	}
 }

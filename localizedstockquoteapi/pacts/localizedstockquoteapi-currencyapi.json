@@ -18,11 +18,52 @@
                     "Content-Type": "application/json"
                 },
                 "body": {
-                    "to": "CNY",
+                    "val": 100,
                     "from": "USD",
-                    "val": 6.870904
+                    "to": "CNY"
+                },
+                "matchingRules": {
+                    "body": {
+                        "$.to": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$.from": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$.val": {
+                            "matchers": [
+                                {
+                                    "match": "decimal"
+                                }
+                            ],
+                            "combine": "AND"
+                        }
+                    }
+                },
+                "generators": {
+                    "body": {
+                        "$.val": {
+                            "type": "RandomDecimal",
+                            "digits": 10
+                        }
+                    }
                 }
-            }
+            },
+            "providerStates": [
+                {
+                    "name": "localizedstockquoteapi to currencyapi"
+                }
+            ]
         }
     ],
     "metadata": {

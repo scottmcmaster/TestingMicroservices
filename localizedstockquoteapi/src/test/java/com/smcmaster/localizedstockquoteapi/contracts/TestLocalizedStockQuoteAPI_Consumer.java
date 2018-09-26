@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import au.com.dius.pact.consumer.*;
+import au.com.dius.pact.consumer.dsl.DslPart;
+import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.RequestResponsePact;
 
@@ -42,6 +44,10 @@ public class TestLocalizedStockQuoteAPI_Consumer {
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "application/json");
 
+        DslPart body = new PactDslJsonBody()
+        		.stringValue("symbol", "BABA")
+        		.decimalType("price");
+
         return builder
         	.given("localizedstockquoteapi to stockquoteapi")
             .uponReceiving("stockquoteapi test interaction")
@@ -50,10 +56,7 @@ public class TestLocalizedStockQuoteAPI_Consumer {
             .willRespondWith()
                 .status(200)
                 .headers(headers)
-                .body("{\n" + 
-                		"    \"symbol\": \"BABA\",\n" + 
-                		"    \"price\": 164.74\n" + 
-                		"}")
+                .body(body)
             .toPact();
     }
     
@@ -62,6 +65,11 @@ public class TestLocalizedStockQuoteAPI_Consumer {
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "application/json");
 
+        DslPart body = new PactDslJsonBody()
+        		.stringType("to", "CNY")
+        		.stringType("from", "USD")
+        		.decimalType("val");
+        
         return builder
         	.given("localizedstockquoteapi to currencyapi")
             .uponReceiving("currencyapi test interaction")
@@ -70,11 +78,7 @@ public class TestLocalizedStockQuoteAPI_Consumer {
             .willRespondWith()
                 .status(200)
                 .headers(headers)
-                .body("{\n" + 
-                		"    \"to\": \"CNY\",\n" + 
-                		"    \"from\": \"USD\",\n" + 
-                		"    \"val\": 6.870904\n" + 
-                		"}")
+                .body(body)
             .toPact();
     }
     
