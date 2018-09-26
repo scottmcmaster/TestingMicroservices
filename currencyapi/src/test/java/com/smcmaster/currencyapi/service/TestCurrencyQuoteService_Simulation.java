@@ -39,5 +39,4 @@ public class TestCurrencyQuoteService_Simulation {
 		CurrencyQuote quote = svc.retrieveQuote("USD", "CNY");
 		assertEquals(6.878899, quote.getVal(), 0.001);
 	}
-
 }

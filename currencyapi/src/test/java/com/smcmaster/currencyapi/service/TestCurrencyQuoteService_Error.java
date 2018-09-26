@@ -40,7 +40,7 @@ public class TestCurrencyQuoteService_Error {
 		try {
 			svc.retrieveQuote("USD", "CNY");
 		} catch (RuntimeException ex) {
-			assertEquals("Error occurred getting currency quote", ex.getMessage());
+			assertEquals("Server error occurred getting currency quote", ex.getMessage());
 			assertTrue(ex.getCause() instanceof HttpServerErrorException);
 			assertEquals(500, ((HttpServerErrorException)ex.getCause()).getRawStatusCode());
 			return;

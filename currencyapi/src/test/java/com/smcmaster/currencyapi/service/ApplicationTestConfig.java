@@ -37,6 +37,10 @@ public class ApplicationTestConfig {
         
         requestFactory.setHttpClient(httpClient);
         
+        // Spring RestTemplate doesn't allow per-request timeout, so we have to be careful
+        // to set this up the same way the "real" RestTemplate is configured.
+        requestFactory.setReadTimeout(3000);
+        
         return new RestTemplate(requestFactory);
     }
 }
