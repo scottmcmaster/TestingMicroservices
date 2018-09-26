@@ -1,0 +1,36 @@
+{
+    "provider": {
+        "name": "currencyapi"
+    },
+    "consumer": {
+        "name": "localizedstockquoteapi"
+    },
+    "interactions": [
+        {
+            "description": "currencyapi test interaction",
+            "request": {
+                "method": "GET",
+                "path": "/currencyconverter/USD/CNY"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": {
+                    "to": "CNY",
+                    "from": "USD",
+                    "val": 6.870904
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "pactSpecification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.6.0-rc.0"
+        }
+    }
+}

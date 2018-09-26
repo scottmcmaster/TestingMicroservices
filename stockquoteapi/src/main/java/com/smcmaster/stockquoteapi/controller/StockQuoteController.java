@@ -14,7 +14,7 @@ public class StockQuoteController {
 	@Autowired
 	private StockQuoteService currencyQuoteService;
 	
-	@GetMapping("/stockquote/{symbol}")
+	@GetMapping(path = "/stockquote/{symbol}", produces = "application/json")
 	public StockQuote retrieveQuote(@PathVariable String symbol) {
 		return currencyQuoteService.retrieveQuote(symbol);
 	}

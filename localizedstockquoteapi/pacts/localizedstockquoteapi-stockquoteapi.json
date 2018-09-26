@@ -1,0 +1,35 @@
+{
+    "provider": {
+        "name": "stockquoteapi"
+    },
+    "consumer": {
+        "name": "localizedstockquoteapi"
+    },
+    "interactions": [
+        {
+            "description": "stockquoteapi test interaction",
+            "request": {
+                "method": "GET",
+                "path": "/stockquote/BABA"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": {
+                    "symbol": "BABA",
+                    "price": 164.74
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "pactSpecification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.6.0-rc.0"
+        }
+    }
+}

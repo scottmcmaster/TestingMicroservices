@@ -14,7 +14,7 @@ public class CurrencyQuoteController {
 	@Autowired
 	private CurrencyQuoteService currencyQuoteService;
 	
-	@GetMapping("/currencyconverter/{from}/{to}")
+	@GetMapping(path = "/currencyconverter/{from}/{to}", produces = "application/json")
 	public CurrencyQuote retrieveQuote(@PathVariable String from, @PathVariable String to) {
 		return currencyQuoteService.retrieveQuote(from, to);
 	}
