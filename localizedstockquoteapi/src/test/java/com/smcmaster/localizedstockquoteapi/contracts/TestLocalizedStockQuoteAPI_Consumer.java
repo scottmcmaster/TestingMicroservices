@@ -43,6 +43,7 @@ public class TestLocalizedStockQuoteAPI_Consumer {
         headers.put("Content-Type", "application/json");
 
         return builder
+        	.given("localizedstockquoteapi to stockquoteapi")
             .uponReceiving("stockquoteapi test interaction")
                 .path("/stockquote/BABA")
                 .method("GET")
@@ -62,6 +63,7 @@ public class TestLocalizedStockQuoteAPI_Consumer {
         headers.put("Content-Type", "application/json");
 
         return builder
+        	.given("localizedstockquoteapi to currencyapi")
             .uponReceiving("currencyapi test interaction")
                 .path("/currencyconverter/USD/CNY")
                 .method("GET")

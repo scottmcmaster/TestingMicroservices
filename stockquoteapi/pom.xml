@@ -39,6 +39,14 @@
 			<artifactId>currency-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/au.com.dius/pact-jvm-provider-junit -->
+		<dependency>
+		    <groupId>au.com.dius</groupId>
+		    <artifactId>pact-jvm-provider-junit_2.12</artifactId>
+		    <version>3.6.0-rc.0</version>
+		</dependency>
+		
     </dependencies>
     <build>
         <plugins>
