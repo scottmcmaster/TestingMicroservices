@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+	   	<docker.image.prefix>scottmcmaster</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -80,17 +81,29 @@
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>
+			<!-- mvn pact:publish to publish pact files to the broker -->
 			<plugin>
 				<groupId>au.com.dius</groupId>
-				<artifactId>pact-jvm-provider-maven_2.11</artifactId>
-				<version>3.5.5</version>
+				<artifactId>pact-jvm-provider-maven_2.12</artifactId>
+				<version>3.6.0-rc.0</version>
 				<configuration>
 					<pactBrokerUrl>
 						http://localhost:32769
 					</pactBrokerUrl>
-					<trimSnapshot>true</trimSnapshot> <!-- Defaults to false -->
+					<trimSnapshot>true</trimSnapshot>
 				</configuration>
 			</plugin>
+	        <plugin>
+	            <groupId>com.spotify</groupId>
+	            <artifactId>dockerfile-maven-plugin</artifactId>
+	            <version>1.3.6</version>
+	            <configuration>
+	                <repository>${docker.image.prefix}/${project.artifactId}</repository>
+	                <buildArgs>
+	                    <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+	                </buildArgs>
+	            </configuration>
+	        </plugin>			
 		</plugins>
 	</build>
 </project>

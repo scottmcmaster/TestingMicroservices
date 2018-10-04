@@ -22,20 +22,13 @@ import com.smcmaster.localizedstockquoteapi.model.LocalizedStockQuote;
 import com.smcmaster.localizedstockquoteapi.service.LocalizedStockQuoteService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = {
-        "currencyapi.host: localhost",
-        "currencyapi.port: 8080",
-        "stockquoteapi.host: localhost",
-        "stockquoteapi.port: 8081",
-})
+@SpringBootTest(properties = {"currencyapi.host: localhost", "currencyapi.port: 8080",
+		"stockquoteapi.host: localhost", "stockquoteapi.port: 8081"})
 public class TestLocalizedStockQuoteAPI_Consumer {
 
 	@Autowired
 	private LocalizedStockQuoteService svc;
 	
-    @Rule
-    public PactProviderRuleMk2 mockCurrencyProvider = new PactProviderRuleMk2("currencyapi", "localhost", 8080, this);
-
     @Rule
     public PactProviderRuleMk2 mockStockQuoteProvider = new PactProviderRuleMk2("stockquoteapi", "localhost", 8081, this);
     
@@ -60,6 +53,9 @@ public class TestLocalizedStockQuoteAPI_Consumer {
             .toPact();
     }
     
+    @Rule
+    public PactProviderRuleMk2 mockCurrencyProvider = new PactProviderRuleMk2("currencyapi", "localhost", 8080, this);
+
     @Pact(provider="currencyapi", consumer="localizedstockquoteapi")
     public RequestResponsePact createCurrencyApiPact(PactDslWithProvider builder) {
         Map<String, String> headers = new HashMap<String, String>();

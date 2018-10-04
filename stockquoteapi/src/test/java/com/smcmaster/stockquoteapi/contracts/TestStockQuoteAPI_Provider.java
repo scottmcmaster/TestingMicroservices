@@ -27,7 +27,8 @@ public class TestStockQuoteAPI_Provider {
 	
 	@BeforeClass
 	public static void start() {
-		application = (ConfigurableWebApplicationContext) SpringApplication.run(Application.class);
+		application = (ConfigurableWebApplicationContext)
+				SpringApplication.run(Application.class);
 	}
 
 	@State("localizedstockquoteapi to stockquoteapi")

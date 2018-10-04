@@ -1,6 +1,7 @@
 package com.smcmaster.stockquoteapi.contracts;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.boot.SpringApplication;
 import org.springframework.web.context.ConfigurableWebApplicationContext;
@@ -15,9 +16,10 @@ import au.com.dius.pact.provider.junit.target.HttpTarget;
 import au.com.dius.pact.provider.junit.target.Target;
 import au.com.dius.pact.provider.junit.target.TestTarget;
 
+@Ignore
 @RunWith(PactRunner.class)
 @Provider("stockquoteapi")
-@PactBroker(host = "localhost", port = "32769")
+@PactBroker(host = "localhost", port = "32769", tags = {"latest"})
 public class TestStockQuoteAPI_Provider_UseBroker {
 
 	@TestTarget

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smcmaster.currency.model.StockQuote;
+import com.smcmaster.currency.model.StockQuote2;
 import com.smcmaster.stockquoteapi.service.StockQuoteService;
 
 @RestController
