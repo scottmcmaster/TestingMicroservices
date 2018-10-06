@@ -1,0 +1,28 @@
+version: '3'
+services:
+  stockquote.api:
+    image: scottmcmaster/stock-quote-api:latest
+    ports:
+      - "8090:8090"
+    expose:
+      - "8090"
+  currency.api:
+    image: scottmcmaster/currency-api:latest
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+  localized_stock_quote.api:
+    image: scottmcmaster/localized-stock-quote-api:latest
+    environment:
+      - CURRENCYAPI_HOST=currency.api
+      - CURRENCYAPI_PORT=8080
+      - STOCKQUOTEAPI_HOST=stockquote.api
+      - STOCKQUOTEAPI_PORT=8090
+    ports:
+      - "8070:8070"
+    expose:
+      - "8070"
+    depends_on:
+      - currency.api
+      - stockquote.api

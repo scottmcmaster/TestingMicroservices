@@ -1,7 +1,6 @@
 package com.smcmaster.localizedstockquoteapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -9,22 +8,15 @@ import org.springframework.web.client.RestTemplate;
 
 import com.smcmaster.currency.model.CurrencyQuote;
 import com.smcmaster.currency.model.StockQuote;
+import com.smcmaster.localizedstockquoteapi.config.Config;
 import com.smcmaster.localizedstockquoteapi.model.LocalizedStockQuote;
 
 @Component
 public class LocalizedStockQuoteService {
-	@Value("${currencyapi.host}")
-	private String currencyApiHost;
-	  
-	@Value("${currencyapi.port}")
-	private int currencyApiPort;
-	  
-	@Value("${stockquoteapi.host}")
-	private String stockquoteApiHost;
-	  
-	@Value("${stockquoteapi.port}")
-	private int stockquoteApiPort;
-	  
+	
+	@Autowired
+	private Config config;
+	
 	@Autowired
 	private RestTemplate restTemplate;
 	
@@ -41,13 +33,13 @@ public class LocalizedStockQuoteService {
 	}
 
 	private CurrencyQuote getCurrencyQuote(String currency) {
-		String hostport = "http://" + currencyApiHost + ":" + currencyApiPort;
+		String hostport = "http://" + config.getCurrencyApiHost() + ":" + config.getCurrencyApiPort();
 		String url = hostport + "/currencyconverter/USD/" + currency;
 		return restTemplate.getForObject(url, CurrencyQuote.class);
 	}
 	
 	private StockQuote getStockQuote(String symbol) {
-		String hostport = "http://" + stockquoteApiHost + ":" + stockquoteApiPort;
+		String hostport = "http://" + config.getStockquoteApiHost() + ":" + config.getStockquoteApiPort();
 		String url = hostport + "/stockquote/" + symbol;
 		return restTemplate.getForObject(url, StockQuote.class);
 	}
