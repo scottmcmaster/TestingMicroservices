@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "3cf52583-9121-41ae-b740-2818505d1a61",
+		"name": "TestingMicroservices - IntegrationTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localizedstockquoteapi",
+			"item": [
+				{
+					"name": "Get Localized Stock Quote Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "136e53d8-2f9c-4074-b2e2-9f78a3e00baa",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Contains symbol\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.symbol).to.eql(\"BABA\");",
+									"});",
+									"",
+									"pm.test(\"Contains currency\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.currency).to.eql(\"CNY\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://{{localizedstockquote}}/localizedstockquote/BABA/CNY",
+							"protocol": "http",
+							"host": [
+								"{{localizedstockquote}}"
+							],
+							"path": [
+								"localizedstockquote",
+								"BABA",
+								"CNY"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

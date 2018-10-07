@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  integrationtests:
+    build: integration-tests/.
+    image: scottmcmaster/testing-microservices-integration-tests:latest
+    entrypoint: [ "/wait-for-it.sh", "localizedstockquote.api:8090", "currency.api:8080", "stockquote.api:8070", "-t", "30", "--" ]
+    command: ["newman", "run", "integration-tests.json", "-e", "dockercompose.postman_environment.json"]
+    depends_on:
+      - localizedstockquote.api
+      - currency.api
+      - stockquote.api
+    links:
+      - localizedstockquote.api
+      - currency.api
+      - stockquote.api

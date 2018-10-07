@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  integrationtests:
+    build: .
+    image: scottmcmaster/testing-microservices-integration-tests:latest
